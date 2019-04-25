@@ -17,8 +17,11 @@ package org.docksidestage.javatry.colorbox;
 
 import java.util.List;
 
+import ch.qos.logback.core.read.ListAppender;
 import org.docksidestage.bizfw.colorbox.ColorBox;
 import org.docksidestage.bizfw.colorbox.color.BoxColor;
+import org.docksidestage.bizfw.colorbox.size.BoxSize;
+import org.docksidestage.bizfw.colorbox.space.BoxSpace;
 import org.docksidestage.javatry.colorbox.base.YourPrivateRoom;
 import org.docksidestage.unit.PlainTestCase;
 
@@ -37,6 +40,7 @@ public class Step11ClassicStringTest extends PlainTestCase {
      * How many lengths does color name of first color-boxes have? <br>
      * (最初のカラーボックスの色の名前の文字数は？)
      */
+
     public void test_length_basic() {
         List<ColorBox> colorBoxList = new YourPrivateRoom().getColorBoxList();
         ColorBox colorBox = colorBoxList.get(0);
@@ -51,6 +55,30 @@ public class Step11ClassicStringTest extends PlainTestCase {
      * (カラーボックスに入ってる文字列の中で、一番長い文字列は？)
      */
     public void test_length_findMax() {
+        List<ColorBox> colorBoxList = new YourPrivateRoom().getColorBoxList();
+        for (ColorBox colorBox : colorBoxList) {
+//            BoxSize boxSize = colorBox.getSize();
+            BoxSize boxSize = colorBox.getSize();
+            for (int i = 0; i <= boxSize ; i++) {
+                colorBox.getSpaceList().get(i).getContent();
+            }
+
+        }
+//        for (ColorBox colorBox : colorBoxList) {
+//            for (int i = 0; i <= 2; i++) {
+////                String current_item = colorBox.getSpaceList().get(i);
+////                current_item;
+//            }
+//        }
+//        String maxStr = null;
+//        for (ColorBox colorBox : colorBoxList) {
+//            List<BoxSpace> spaceList = colorBox.getSpaceList();
+//            for (BoxSpace space : spaceList) {
+//                Object content = space.getContent();
+//
+//            }
+//
+//        }
     }
 
     /**
