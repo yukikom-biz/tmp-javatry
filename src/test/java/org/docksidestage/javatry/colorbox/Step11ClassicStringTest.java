@@ -79,6 +79,7 @@ public class Step11ClassicStringTest extends PlainTestCase {
 //            }
 //
 //        }
+        //test commit form intellJ
     }
 
     /**
