@@ -15,6 +15,7 @@
  */
 package org.docksidestage.javatry.colorbox;
 
+import java.io.File;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -264,7 +265,7 @@ public class Step11ClassicStringTest extends PlainTestCase {
         }
         if (match_name_count == 0) {
             log("Nothing to match");
-        }else{
+        } else {
             log(match_name_count + " is matched");
         }
     }
@@ -342,7 +343,23 @@ public class Step11ClassicStringTest extends PlainTestCase {
      */
     public void test_replace_fileseparator() {
         List<ColorBox> colorBoxList = new YourPrivateRoom().getColorBoxList();
-        
+        //done in class
+        int match_name_count = 0;
+        for (ColorBox colorBox : colorBoxList) {
+            List<BoxSpace> colorBoxSpaceList = colorBox.getSpaceList();
+            for (BoxSpace boxSpace : colorBoxSpaceList) {
+                Object boxContent = boxSpace.getContent();
+                if (boxContent instanceof File) {
+                    String targetPath = ((File) boxContent).getPath();
+                    match_name_count += 1;
+                    String replacedPath = targetPath.replace("/", "\\");
+                    log("From: " + targetPath);
+                    log("Re: " + replacedPath);
+                }
+            }
+        }
+        if (match_name_count == 0)
+            log("Nothing to match");
     }
 
     // ===================================================================================
