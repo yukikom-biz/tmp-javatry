@@ -26,6 +26,7 @@ import org.docksidestage.bizfw.colorbox.color.BoxColor;
 import org.docksidestage.bizfw.colorbox.size.BoxSize;
 import org.docksidestage.bizfw.colorbox.space.BoxSpace;
 import org.docksidestage.javatry.colorbox.base.YourPrivateRoom;
+import org.docksidestage.javatry.colorbox.base.YourPrivateRoom.DevilBox;
 import org.docksidestage.unit.PlainTestCase;
 
 /**
@@ -369,8 +370,61 @@ public class Step11ClassicStringTest extends PlainTestCase {
      * What is total length of text of DevilBox class in color-boxes? <br>
      * (カラーボックスの中に入っているDevilBoxクラスのtextの長さの合計は？)
      */
-    public void test_welcomeToDevil() {
+     public void test_welcomeToDevil() {
         List<ColorBox> colorBoxList = new YourPrivateRoom().getColorBoxList();
+        //done in class
+        int matchCount = 0;
+        int sumTextLength = 0;
+        String devilText = "";
+//        Class<? extends List> aClass = colorBoxList.getClass();
+//        log(aClass);
+        for (ColorBox colorBox : colorBoxList) {
+            if (colorBox instanceof DevilBox)
+                log("colorBox");
+            List<BoxSpace> colorBoxSpaceList = colorBox.getSpaceList();
+            if (colorBoxSpaceList instanceof DevilBox)
+                log("SpaceLIst");
+            for (BoxSpace boxSpace : colorBoxSpaceList) {
+                Object tmpContent = boxSpace.getContent();
+                if (tmpContent instanceof DevilBox) {
+                    log("as Devil");
+//                    String devilText = ((DevilBox) tmpContent).wakeUp();
+                    ((DevilBox) tmpContent).wakeUp();
+                    ((DevilBox) tmpContent).allowMe();
+                    ((DevilBox) tmpContent).open();
+
+                    if (tmpContent != null)
+                        devilText = ((DevilBox) tmpContent).getText();
+
+                    if (devilText != ""){
+                        sumTextLength += devilText.length();
+                        matchCount +=1;
+                    }
+                }
+                //                if (boxSpace instanceof DevilBox)
+//                    log("boxSpace");
+            }
+        }
+//            if(colorBox instanceof DevilBox)
+//
+//                Object boxContent = boxSpace.getContent();
+//                if(boxContent instanceof DevilBox){
+//                    Class<?> aClass = boxContent.getClass();
+//                    log(aClass);
+//                }
+//                //                Class<?> devilBoxClass = boxContent.getClass(DevilBox);
+////                String string = devilBoxClass.toString();
+////                log(string);
+//
+//            }
+
+        if (matchCount == 0){
+            log("Nothing to match");
+        }else {
+            log("Sum is {}",sumTextLength);
+        }
+
+
     }
 
     // ===================================================================================
